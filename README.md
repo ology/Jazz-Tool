@@ -1,3 +1,3 @@
 # Jazz::Tool
 
-Jazz Improv Practice Tool
+12-bar Blues-Jazz (Jazz-Blues?) Improv Practice Tool
