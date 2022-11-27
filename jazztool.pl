@@ -1,7 +1,8 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
-use Data::Dumper::Compact qw(ddc);
+use lib 'lib';
+use Jazztool ();
 
 use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 
