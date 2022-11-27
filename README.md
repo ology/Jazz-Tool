@@ -1,3 +1,3 @@
-# Mojo-Jazztool
+# Jazz::Tool
 
 Jazz Improv Practice Tool
