@@ -11,8 +11,10 @@ use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 get '/' => sub ($c) {
   my $action = $c->param('action') || ''; # action to perform
 
+  my $filename = time() . '.mid';
+
   my $jazz = Jazztool->new(
-    filename => time() . '.mid',
+    filename => $filename,
     tonic    => $c->param('tonic'),
     octave   => $c->param('octave'),
     cpatch   => $c->param('cpatch'),
@@ -28,9 +30,12 @@ get '/' => sub ($c) {
     reverb   => $c->param('reverb'),
     verbose  => 1,
   );
+  my $msgs = $jazz->process;
 
   $c->render(
     template => 'index',
+    filename => $filename,
+    msgs     => $msgs,
   );
 } => 'index';
 
