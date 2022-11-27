@@ -11,7 +11,7 @@ use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 get '/' => sub ($c) {
   my $action = $c->param('action') || ''; # action to perform
 
-  my $filename = time() . '.mid';
+  my $filename = 'public/' . time() . '.mid';
 
   my $jazz = Jazztool->new(
     filename => $filename,
@@ -47,6 +47,16 @@ __DATA__
 @@ index.html.ep
 % layout 'default';
 % title '12-Bar Improv Practice Tool';
+
+<a href="#" onClick="function() {
+MIDIjs.initAll();
+MIDIjs.play('<%= $filename %>');}">Play</a>
+<p></p>
+<pre>
+% for my $msg (@$msgs) {
+  <%= $msg %>
+% }
+</pre>
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
