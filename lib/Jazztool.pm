@@ -15,7 +15,8 @@ use Music::Note ();
 has filename => (is => 'ro', required => 1);              # MIDI file name
 has tonic    => (is => 'ro', default => sub { 'C' });     # note to transpose things to
 has octave   => (is => 'ro', default => sub { 4 });       # octave of chord notes
-has patch    => (is => 'ro', default => sub { 5 });       # 0=piano, etc general midi
+has cpatch   => (is => 'ro', default => sub { 5 });       # 0=piano, etc general midi
+has bpatch   => (is => 'ro', default => sub { 35 });      # 35=fretless bass, etc
 has bpm      => (is => 'ro', default => sub { 90 });      # beats per minute
 has phrases  => (is => 'ro', default => sub { 12 });      # number of 4/4 bars
 has repeat   => (is => 'ro', default => sub { 1 });       # number of times to repeat
@@ -68,7 +69,7 @@ sub drums {
 sub bass {
     my ($self) = @_;
     if ($self->do_bass) {
-        set_chan_patch($self->drummer->score, 1, 35);
+        set_chan_patch($self->drummer->score, 1, $self->bpatch);
 
         for (1 .. $self->repeat) {
             for my $n ($self->bassline->@*) {
@@ -81,7 +82,7 @@ sub bass {
 
 sub chords {
     my ($self) = @_;
-    set_chan_patch($self->drummer->score, 0, $self->patch);
+    set_chan_patch($self->drummer->score, 0, $self->cpatch);
 
     my $md = Music::MelodicDevice::Transposition->new;
     my $cn = Music::Chord::Note->new;
