@@ -28,7 +28,6 @@ get '/' => sub ($c) {
     do_bass  => $c->param('do_bass'),
     simple   => $c->param('simple'),
     reverb   => $c->param('reverb'),
-    verbose  => 1,
   );
   my $msgs = $jazz->process;
 
