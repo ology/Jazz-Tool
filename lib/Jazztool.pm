@@ -13,6 +13,7 @@ use Music::MelodicDevice::Transposition ();
 use Music::Note ();
 
 has filename => (is => 'ro', required => 1);              # MIDI file name
+has msgs     => (is => 'rw', default => sub { [] });      # bucket for output messages
 has tonic    => (is => 'ro', default => sub { 'C' });     # note to transpose things to
 has octave   => (is => 'ro', default => sub { 4 });       # octave of chord notes
 has cpatch   => (is => 'ro', default => sub { 5 });       # 0=piano, etc general midi
@@ -27,7 +28,6 @@ has do_bass  => (is => 'ro', default => sub { 0 });       # to have a parallel b
 has bassline => (is => 'rw', default => sub { [] });      # the notes of the bass-line
 has simple   => (is => 'ro', default => sub { 0 });       # don't randomly choose a transition
 has reverb   => (is => 'ro', default => sub { 15 });      # more dry than wet by default
-has verbose  => (is => 'ro', default => sub { 0 });
 has drummer  => (is => 'lazy');
 
 sub _build_drummer {
@@ -43,12 +43,16 @@ sub _build_drummer {
 
 sub process {
     my ($self) = @_;
+
     $self->drummer->sync(
         sub { drums($self) },
         sub { chords($self) },
         sub { bass($self) },
     );
+
     $self->drummer->write;
+
+    return $self->msgs;
 }
 
 sub drums {
@@ -112,7 +116,7 @@ sub chords {
 
         push @bass_notes, $notes[0]; # accumulate the bass notes to play
 
-        my $names = $new_chord; # chord name verbose mode
+        my $names = $new_chord; # chord name
 
         my @spec; # for accumulating within the loop
 
@@ -126,7 +130,7 @@ sub chords {
 
             $_ = accidental($_) for @notes; # convert to flat
 
-            $names .= "-$new_chord"; # chord name verbose mode
+            $names .= "-$new_chord"; # chord name
 
             push @spec, [ $self->drummer->half, @notes ];
         }
@@ -134,8 +138,7 @@ sub chords {
             push @spec, [ $self->drummer->whole, @notes ];
         }
 
-        printf '%*d. %13s: %s', length($self->phrases), $n + 1, $names, ddc(\@spec)
-            if $self->verbose;
+        my $msg = sprintf '%*d. %13s: %s', length($self->phrases), $n + 1, $names, ddc(\@spec);
 
         push @specs, @spec; # accumulate the note specifications
     }
