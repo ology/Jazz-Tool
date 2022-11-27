@@ -12,21 +12,21 @@ use Music::Chord::Note ();
 use Music::MelodicDevice::Transposition ();
 use Music::Note ();
 
-has filename => (is => 'ro', required => 1),              # MIDI file name
-has tonic    => (is => 'ro', default => sub { 'C' }),     # note to transpose things to
-has octave   => (is => 'ro', default => sub { 4 }),       # octave of chord notes
-has patch    => (is => 'ro', default => sub { 5 }),       # 0=piano, etc general midi
-has bpm      => (is => 'ro', default => sub { 90 }),      # beats per minute
-has bars     => (is => 'ro', default => sub { 12 }),      # number of 4/4 bars
-has repeat   => (is => 'ro', default => sub { 1 }),       # number of times to repeat
-has percent  => (is => 'ro', default => sub { 25 }),      # maximum half-note percentage
-has hihat    => (is => 'ro', default => sub { 'pedal' }), # pedal, closed, open
-has drums    => (is => 'ro', default => sub { 0 }),       # to drum, or not to drum?
-has bass     => (is => 'ro', default => sub { 0 }),       # to have a parallel bass or not
-has bassline => (is => 'rw', default => sub { [] }),      # the notes of the bass-line
-has simple   => (is => 'ro', default => sub { 0 }),       # don't randomly choose a transition
-has reverb   => (is => 'ro', default => sub { 15 }),      # more dry than wet by default
-has verbose  => (is => 'ro', default => sub { 0 }),
+has filename => (is => 'ro', required => 1);              # MIDI file name
+has tonic    => (is => 'ro', default => sub { 'C' });     # note to transpose things to
+has octave   => (is => 'ro', default => sub { 4 });       # octave of chord notes
+has patch    => (is => 'ro', default => sub { 5 });       # 0=piano, etc general midi
+has bpm      => (is => 'ro', default => sub { 90 });      # beats per minute
+has bars     => (is => 'ro', default => sub { 12 });      # number of 4/4 bars
+has repeat   => (is => 'ro', default => sub { 1 });       # number of times to repeat
+has percent  => (is => 'ro', default => sub { 25 });      # maximum half-note percentage
+has hihat    => (is => 'ro', default => sub { 'pedal' }); # pedal, closed, open
+has drums    => (is => 'ro', default => sub { 0 });       # to drum, or not to drum?
+has bass     => (is => 'ro', default => sub { 0 });       # to have a parallel bass or not
+has bassline => (is => 'rw', default => sub { [] });      # the notes of the bass-line
+has simple   => (is => 'ro', default => sub { 0 });       # don't randomly choose a transition
+has reverb   => (is => 'ro', default => sub { 15 });      # more dry than wet by default
+has verbose  => (is => 'ro', default => sub { 0 });
 has drummer  => (is => 'lazy');
 
 sub _build_drummer {
@@ -57,10 +57,10 @@ sub drums {
         $self->drummer->note($self->drummer->whole, $self->drummer->kick, $self->drummer->ride1);
     }
     else {
-        my $metronome = $self->hihat . '_hh';
+        my $patch = $self->hihat . '_hh';
         $self->drummer->count_in({
             bars  => $self->drummer->bars * $self->repeat,
-            patch => $self->drummer->$metronome(),
+            patch => $self->drummer->$patch(),
         });
     }
 }
