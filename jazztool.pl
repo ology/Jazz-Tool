@@ -1,6 +1,8 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
+use Time::HiRes qw(time);
+
 use lib 'lib';
 use Jazztool ();
 
@@ -8,6 +10,24 @@ use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 
 get '/' => sub ($c) {
   my $action = $c->param('action') || ''; # action to perform
+
+  my $jazz = Jazztool->new(
+    filename => time() . '.mid',
+    tonic    => $c->param('tonic'),
+    octave   => $c->param('octave'),
+    cpatch   => $c->param('cpatch'),
+    bpatch   => $c->param('bpatch'),
+    bpm      => $c->param('bpm'),
+    phrases  => $c->param('phrases'),
+    repeat   => $c->param('repeat'),
+    percent  => $c->param('percent'),
+    hihat    => $c->param('hihat'),
+    do_drums => $c->param('do_drums'),
+    do_bass  => $c->param('do_bass'),
+    simple   => $c->param('simple'),
+    reverb   => $c->param('reverb'),
+    verbose  => 1,
+  );
 
   $c->render(
     template => 'index',
