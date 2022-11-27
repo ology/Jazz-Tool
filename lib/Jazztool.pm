@@ -105,6 +105,7 @@ sub chords {
 
     my @specs; # bucket for the actual MIDI notes to play
     my @bass_notes; # bucket for the notes of the bass-line
+    my @msgs; # bucket for process progress
 
     for my $n (0 .. $self->drummer->bars - 1) {
         my @pool = $bars[ $n % @bars ]->@*;
@@ -138,12 +139,13 @@ sub chords {
             push @spec, [ $self->drummer->whole, @notes ];
         }
 
-        my $msg = sprintf '%*d. %13s: %s', length($self->phrases), $n + 1, $names, ddc(\@spec);
+        push @msgs, sprintf '%*d. %13s: %s', length($self->phrases), $n + 1, $names, ddc(\@spec);
 
         push @specs, @spec; # accumulate the note specifications
     }
 
     $self->bassline(\@bass_notes);
+    $self->msgs(\@msgs);
 
     # actually add the MIDI notes to the score
     for (1 .. $self->repeat) {
