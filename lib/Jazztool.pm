@@ -17,12 +17,12 @@ has tonic    => (is => 'ro', default => sub { 'C' });     # note to transpose th
 has octave   => (is => 'ro', default => sub { 4 });       # octave of chord notes
 has patch    => (is => 'ro', default => sub { 5 });       # 0=piano, etc general midi
 has bpm      => (is => 'ro', default => sub { 90 });      # beats per minute
-has bars     => (is => 'ro', default => sub { 12 });      # number of 4/4 bars
+has phrases  => (is => 'ro', default => sub { 12 });      # number of 4/4 bars
 has repeat   => (is => 'ro', default => sub { 1 });       # number of times to repeat
 has percent  => (is => 'ro', default => sub { 25 });      # maximum half-note percentage
 has hihat    => (is => 'ro', default => sub { 'pedal' }); # pedal, closed, open
-has drums    => (is => 'ro', default => sub { 0 });       # to drum, or not to drum?
-has bass     => (is => 'ro', default => sub { 0 });       # to have a parallel bass or not
+has do_drums => (is => 'ro', default => sub { 0 });       # to drum, or not to drum?
+has do_bass  => (is => 'ro', default => sub { 0 });       # to have a parallel bass or not
 has bassline => (is => 'rw', default => sub { [] });      # the notes of the bass-line
 has simple   => (is => 'ro', default => sub { 0 });       # don't randomly choose a transition
 has reverb   => (is => 'ro', default => sub { 15 });      # more dry than wet by default
@@ -33,7 +33,7 @@ sub _build_drummer {
     my ($self) = @_;
     my $d = MIDI::Drummer::Tiny->new(
         file   => $self->filename,
-        bars   => $self->bars,
+        bars   => $self->phrases,
         bpm    => $self->bpm,
         reverb => $self->reverb,
     );
@@ -52,7 +52,7 @@ sub finalize {
 
 sub drums {
     my ($self) = @_;
-    if ($self->drums) {
+    if ($self->do_drums) {
         $self->drummer->metronome44swing($self->drummer->bars * $self->repeat);
         $self->drummer->note($self->drummer->whole, $self->drummer->kick, $self->drummer->ride1);
     }
@@ -67,7 +67,7 @@ sub drums {
 
 sub bass {
     my ($self) = @_;
-    if ($self->bass) {
+    if ($self->do_bass) {
         set_chan_patch($self->drummer->score, 1, 35);
 
         for (1 .. $self->repeat) {
@@ -133,7 +133,7 @@ sub chords {
             push @spec, [ $self->drummer->whole, @notes ];
         }
 
-        printf '%*d. %13s: %s', length($self->bars), $n + 1, $names, ddc(\@spec)
+        printf '%*d. %13s: %s', length($self->phrases), $n + 1, $names, ddc(\@spec)
             if $self->verbose;
 
         push @specs, @spec; # accumulate the note specifications
