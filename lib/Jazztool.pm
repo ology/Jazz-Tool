@@ -41,7 +41,7 @@ sub _build_drummer {
     return $d;
 }
 
-sub finalize {
+sub process {
     my ($self) = @_;
     $self->drummer->sync(
         sub { drums($self) },
