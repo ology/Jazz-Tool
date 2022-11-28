@@ -116,14 +116,6 @@ __DATA__
     <label for="percent">Percent:</label>
     <input type="number" class="form-control form-control-sm" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
   </div>
-  <div class="form-group">
-    <label for="hihat">Hihat:</label>
-    <select class="form-control form-control-sm" id="hihat" name="hihat">
-% for my $i (qw(pedal closed open)) {
-      <option value="<%= $i %>"><%= $i %></option>
-% }
-    </select>
-  </div>
   <div class="form-check form-check-inline">
     <input class="form-check-input" type="checkbox" id="do_bass" value="<%= $do_bass %>">
     <label class="form-check-label" for="do_bass">Bass</label>
@@ -135,6 +127,14 @@ __DATA__
   <div class="form-group">
     <label for="reverb">Drum reverb:</label>
     <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>">
+  </div>
+  <div class="form-group">
+    <label for="hihat">Hihat:</label>
+    <select class="form-control form-control-sm" id="hihat" name="hihat">
+% for my $i (qw(pedal closed open)) {
+      <option value="<%= $i %>"><%= $i %></option>
+% }
+    </select>
   </div>
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
