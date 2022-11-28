@@ -15,19 +15,19 @@ get '/' => sub ($c) {
 
   my $jazz = Jazztool->new(
     filename => $filename,
-    tonic    => $c->param('tonic'),
-    octave   => $c->param('octave'),
-    cpatch   => $c->param('cpatch'),
-    bpatch   => $c->param('bpatch'),
-    bpm      => $c->param('bpm'),
-    phrases  => $c->param('phrases'),
-    repeat   => $c->param('repeat'),
-    percent  => $c->param('percent'),
-    hihat    => $c->param('hihat'),
-    do_drums => $c->param('do_drums'),
-    do_bass  => $c->param('do_bass'),
-    simple   => $c->param('simple'),
-    reverb   => $c->param('reverb'),
+    $c->param('tonic')    ? (tonic    => $c->param('tonic'))    : (),
+    $c->param('octave')   ? (octave   => $c->param('octave'))   : (),
+    $c->param('cpatch')   ? (cpatch   => $c->param('cpatch'))   : (),
+    $c->param('bpatch')   ? (bpatch   => $c->param('bpatch'))   : (),
+    $c->param('my_bpm')   ? (my_bpm   => $c->param('my_bpm'))   : (),
+    $c->param('phrases')  ? (phrases  => $c->param('phrases'))  : (),
+    $c->param('repeat')   ? (repeat   => $c->param('repeat'))   : (),
+    $c->param('percent')  ? (percent  => $c->param('percent'))  : (),
+    $c->param('hihat')    ? (hihat    => $c->param('hihat'))    : (),
+    $c->param('do_drums') ? (do_drums => $c->param('do_drums')) : (),
+    $c->param('do_bass')  ? (do_bass  => $c->param('do_bass'))  : (),
+    $c->param('simple')   ? (simple   => $c->param('simple'))   : (),
+    $c->param('reverb')   ? (reverb   => $c->param('reverb'))   : (),
   );
   my $msgs = $jazz->process;
 
