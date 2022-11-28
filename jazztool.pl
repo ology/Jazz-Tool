@@ -9,6 +9,7 @@ use Jazztool ();
 use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 
 get '/' => sub ($c) {
+  my $submit   = $c->param('submit')   || 0;
   my $tonic    = $c->param('tonic')    || 'C';
   my $octave   = $c->param('octave')   || 4;
   my $cpatch   = $c->param('cpatch')   || 0;
@@ -23,27 +24,33 @@ get '/' => sub ($c) {
   my $simple   = $c->param('simple')   || 0;
   my $reverb   = $c->param('reverb')   || 15;
 
-  my $filename = 'public/' . time() . '.mid';
+  my $filename = '';
+  my $msgs = [];
 
-  my $jazz = Jazztool->new(
-    filename => $filename,
-    tonic    => $tonic,
-    octave   => $octave,
-    cpatch   => $cpatch,
-    bpatch   => $bpatch,
-    my_bpm   => $my_bpm,
-    phrases  => $phrases,
-    repeat   => $repeat,
-    percent  => $percent,
-    hihat    => $hihat,
-    do_drums => $do_drums,
-    do_bass  => $do_bass,
-    simple   => $simple,
-    reverb   => $reverb,
-  );
-  my $msgs = $jazz->process;
+  if ($submit) {
+    $filename = 'public/' . time() . '.mid';
 
-  $filename =~ s/^public(.*)$/$1/;
+    my $jazz = Jazztool->new(
+      filename => $filename,
+      tonic    => $tonic,
+      octave   => $octave,
+      cpatch   => $cpatch,
+      bpatch   => $bpatch,
+      my_bpm   => $my_bpm,
+      phrases  => $phrases,
+      repeat   => $repeat,
+      percent  => $percent,
+      hihat    => $hihat,
+      do_drums => $do_drums,
+      do_bass  => $do_bass,
+      simple   => $simple,
+      reverb   => $reverb,
+    );
+
+    $msgs = $jazz->process;
+
+    $filename =~ s/^public(.*)$/$1/;
+  }
 
   $c->render(
     template => 'index',
@@ -136,19 +143,21 @@ __DATA__
 % }
     </select>
   </div>
-  <input type="submit" class="btn btn-primary" value="Submit">
+  <input type="submit" class="btn btn-primary" name="submit" value="Submit">
 </form>
 
+% if ($filename) {
 <p></p>
 <a href="#" onClick="MIDIjs.play('<%= $filename %>');">Play MIDI</a>
 |
 <a href="<%= $filename %>">Download MIDI</a>
 <p></p>
 <pre>
-% for my $msg (@$msgs) {
+%   for my $msg (@$msgs) {
   <%= $msg %>
-% }
+%   }
 </pre>
+% }
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
