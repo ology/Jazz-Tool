@@ -9,25 +9,37 @@ use Jazztool ();
 use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 
 get '/' => sub ($c) {
-  my $action = $c->param('action') || ''; # action to perform
+  my $tonic    = $c->param('tonic')    || 'C';
+  my $octave   = $c->param('octave')   || 4;
+  my $cpatch   = $c->param('cpatch')   || 0;
+  my $bpatch   = $c->param('bpatch')   || 35;
+  my $my_bpm   = $c->param('my_bpm')   || 90;
+  my $phrases  = $c->param('phrases')  || 12;
+  my $repeat   = $c->param('repeat')   || 1;
+  my $percent  = $c->param('percent')  || 25;
+  my $hihat    = $c->param('hihat')    || 'closed';
+  my $do_drums = $c->param('do_drums') || 0;
+  my $do_bass  = $c->param('do_bass')  || 1;
+  my $simple   = $c->param('simple')   || 0;
+  my $reverb   = $c->param('reverb')   || 15;
 
   my $filename = 'public/' . time() . '.mid';
 
   my $jazz = Jazztool->new(
     filename => $filename,
-    $c->param('tonic')    ? (tonic    => $c->param('tonic'))    : (),
-    $c->param('octave')   ? (octave   => $c->param('octave'))   : (),
-    $c->param('cpatch')   ? (cpatch   => $c->param('cpatch'))   : (),
-    $c->param('bpatch')   ? (bpatch   => $c->param('bpatch'))   : (),
-    $c->param('my_bpm')   ? (my_bpm   => $c->param('my_bpm'))   : (),
-    $c->param('phrases')  ? (phrases  => $c->param('phrases'))  : (),
-    $c->param('repeat')   ? (repeat   => $c->param('repeat'))   : (),
-    $c->param('percent')  ? (percent  => $c->param('percent'))  : (),
-    $c->param('hihat')    ? (hihat    => $c->param('hihat'))    : (),
-    $c->param('do_drums') ? (do_drums => $c->param('do_drums')) : (),
-    $c->param('do_bass')  ? (do_bass  => $c->param('do_bass'))  : (),
-    $c->param('simple')   ? (simple   => $c->param('simple'))   : (),
-    $c->param('reverb')   ? (reverb   => $c->param('reverb'))   : (),
+    tonic    => $tonic,
+    octave   => $octave,
+    cpatch   => $cpatch,
+    bpatch   => $bpatch,
+    my_bpm   => $my_bpm,
+    phrases  => $phrases,
+    repeat   => $repeat,
+    percent  => $percent,
+    hihat    => $hihat,
+    do_drums => $do_drums,
+    do_bass  => $do_bass,
+    simple   => $simple,
+    reverb   => $reverb,
   );
   my $msgs = $jazz->process;
 
@@ -35,8 +47,21 @@ get '/' => sub ($c) {
 
   $c->render(
     template => 'index',
-    filename => $filename,
     msgs     => $msgs,
+    filename => $filename,
+    tonic    => $tonic,
+    octave   => $octave,
+    cpatch   => $cpatch,
+    bpatch   => $bpatch,
+    my_bpm   => $my_bpm,
+    phrases  => $phrases,
+    repeat   => $repeat,
+    percent  => $percent,
+    hihat    => $hihat,
+    do_drums => $do_drums,
+    do_bass  => $do_bass,
+    simple   => $simple,
+    reverb   => $reverb,
   );
 } => 'index';
 
@@ -52,7 +77,7 @@ __DATA__
 
 <form>
   <div class="form-group">
-    <label for="tonic">Tonic</label>
+    <label for="tonic">Tonic:</label>
     <select class="form-control" id="tonic" name="tonic">
 % for my $i (qw( C Db D Eb E F Gb G Ab A Bb B )) {
       <option value="<%= $i %>"><%= $i %></option>
@@ -60,12 +85,16 @@ __DATA__
     </select>
   </div>
   <div class="form-group">
-    <label for="octave">Octave</label>
+    <label for="octave">Octave:</label>
     <select class="form-control" id="octave" name="octave">
 % for my $i (3, 4, 5, 6) {
       <option value="<%= $i %>"><%= $i %></option>
 % }
     </select>
+  </div>
+  <div class="form-group">
+    <label for="cpatch">Chord patch:</label>
+    <input type="number" class="form-control" id="cpatch" name="cpatch" min="0" max="127" value="<%= $cpatch %>">
   </div>
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
