@@ -43,7 +43,6 @@ sub _build_drummer {
 
 sub process {
     my ($self) = @_;
-warn __PACKAGE__,' L',__LINE__,' ',$self->tonic,"\n";
 
     $self->drummer->sync(
         sub { drums($self) },
