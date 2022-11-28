@@ -31,6 +31,8 @@ get '/' => sub ($c) {
   );
   my $msgs = $jazz->process;
 
+  $filename =~ s/^public(.*)$/$1/;
+
   $c->render(
     template => 'index',
     filename => $filename,
@@ -48,7 +50,7 @@ __DATA__
 % layout 'default';
 % title '12-Bar Improv Practice Tool';
 
-<a href="#" onClick="function() {
+<a href="#" onClick="function play () {
 MIDIjs.initAll();
 MIDIjs.play('<%= $filename %>');}">Play</a>
 <p></p>
