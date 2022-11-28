@@ -50,6 +50,19 @@ __DATA__
 % layout 'default';
 % title '12-Bar Improv Practice Tool';
 
+<form>
+  <div class="form-group">
+    <label for="tonic">Tonic</label>
+    <select class="form-control" id="tonic" name="tonic">
+% for my $key (qw( C Db D Eb E F Gb G Ab A Bb B )) {
+      <option value="<%= $key %>"><%= $key %></option>
+% }
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+
+<p></p>
 <a href="#" onClick="MIDIjs.play('<%= $filename %>');">Play MIDI</a>
 |
 <a href="<%= $filename %>">Download MIDI</a>
