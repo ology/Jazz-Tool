@@ -54,8 +54,16 @@ __DATA__
   <div class="form-group">
     <label for="tonic">Tonic</label>
     <select class="form-control" id="tonic" name="tonic">
-% for my $key (qw( C Db D Eb E F Gb G Ab A Bb B )) {
-      <option value="<%= $key %>"><%= $key %></option>
+% for my $i (qw( C Db D Eb E F Gb G Ab A Bb B )) {
+      <option value="<%= $i %>"><%= $i %></option>
+% }
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="octave">Octave</label>
+    <select class="form-control" id="octave" name="octave">
+% for my $i (3, 4, 5, 6) {
+      <option value="<%= $i %>"><%= $i %></option>
 % }
     </select>
   </div>
