@@ -58,9 +58,9 @@ get '/' => sub ($c) {
     repeat   => $repeat,
     percent  => $percent,
     hihat    => $hihat,
-    do_drums => $do_drums,
-    do_bass  => $do_bass,
-    simple   => $simple,
+    do_drums => $do_drums ? 1 : 0,
+    do_bass  => $do_bass ? 1 : 0,
+    simple   => $simple ? 1 : 0,
     reverb   => $reverb,
   );
 } => 'index';
@@ -95,6 +95,46 @@ __DATA__
   <div class="form-group">
     <label for="cpatch">Chord patch:</label>
     <input type="number" class="form-control" id="cpatch" name="cpatch" min="0" max="127" value="<%= $cpatch %>">
+  </div>
+  <div class="form-group">
+    <label for="bpatch">Bass patch:</label>
+    <input type="number" class="form-control" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>">
+  </div>
+  <div class="form-group">
+    <label for="my_bpm">BPM:</label>
+    <input type="number" class="form-control" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>">
+  </div>
+  <div class="form-group">
+    <label for="phrases">Phrases:</label>
+    <input type="number" class="form-control" id="phrases" name="phrases" min="1" max="128" value="<%= $phrases %>">
+  </div>
+  <div class="form-group">
+    <label for="repeat">Repeat:</label>
+    <input type="number" class="form-control" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>">
+  </div>
+  <div class="form-group">
+    <label for="percent">Percent:</label>
+    <input type="number" class="form-control" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
+  </div>
+  <div class="form-group">
+    <label for="hihat">Hihat:</label>
+    <select class="form-control" id="hihat" name="hihat">
+% for my $i (qw(pedal closed open)) {
+      <option value="<%= $i %>"><%= $i %></option>
+% }
+    </select>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="do_bass" value="<%= $do_bass %>">
+    <label class="form-check-label" for="do_bass">Bass</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="do_drums" value="<%= $do_drums %>">
+    <label class="form-check-label" for="do_drums">Drums</label>
+  </div>
+  <div class="form-group">
+    <label for="reverb">Drum reverb:</label>
+    <input type="number" class="form-control" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>">
   </div>
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
