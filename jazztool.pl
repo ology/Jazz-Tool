@@ -78,7 +78,7 @@ __DATA__
 <form>
   <div class="form-group">
     <label for="tonic">Tonic:</label>
-    <select class="form-control" id="tonic" name="tonic">
+    <select class="form-control form-control-sm" id="tonic" name="tonic">
 % for my $i (qw( C Db D Eb E F Gb G Ab A Bb B )) {
       <option value="<%= $i %>"><%= $i %></option>
 % }
@@ -86,7 +86,7 @@ __DATA__
   </div>
   <div class="form-group">
     <label for="octave">Octave:</label>
-    <select class="form-control" id="octave" name="octave">
+    <select class="form-control form-control-sm" id="octave" name="octave">
 % for my $i (3, 4, 5, 6) {
       <option value="<%= $i %>"><%= $i %></option>
 % }
@@ -94,31 +94,31 @@ __DATA__
   </div>
   <div class="form-group">
     <label for="cpatch">Chord patch:</label>
-    <input type="number" class="form-control" id="cpatch" name="cpatch" min="0" max="127" value="<%= $cpatch %>">
+    <input type="number" class="form-control form-control-sm" id="cpatch" name="cpatch" min="0" max="127" value="<%= $cpatch %>">
   </div>
   <div class="form-group">
     <label for="bpatch">Bass patch:</label>
-    <input type="number" class="form-control" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>">
+    <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>">
   </div>
   <div class="form-group">
     <label for="my_bpm">BPM:</label>
-    <input type="number" class="form-control" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>">
+    <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>">
   </div>
   <div class="form-group">
     <label for="phrases">Phrases:</label>
-    <input type="number" class="form-control" id="phrases" name="phrases" min="1" max="128" value="<%= $phrases %>">
+    <input type="number" class="form-control form-control-sm" id="phrases" name="phrases" min="1" max="128" value="<%= $phrases %>">
   </div>
   <div class="form-group">
     <label for="repeat">Repeat:</label>
-    <input type="number" class="form-control" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>">
+    <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>">
   </div>
   <div class="form-group">
     <label for="percent">Percent:</label>
-    <input type="number" class="form-control" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
+    <input type="number" class="form-control form-control-sm" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
   </div>
   <div class="form-group">
     <label for="hihat">Hihat:</label>
-    <select class="form-control" id="hihat" name="hihat">
+    <select class="form-control form-control-sm" id="hihat" name="hihat">
 % for my $i (qw(pedal closed open)) {
       <option value="<%= $i %>"><%= $i %></option>
 % }
@@ -134,7 +134,7 @@ __DATA__
   </div>
   <div class="form-group">
     <label for="reverb">Drum reverb:</label>
-    <input type="number" class="form-control" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>">
+    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>">
   </div>
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
