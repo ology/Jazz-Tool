@@ -28,10 +28,10 @@ get '/' => sub ($c) {
   my $msgs = [];
 
   if ($submit) {
-    $filename = 'public/' . time() . '.mid';
+    $filename = '/' . time() . '.mid';
 
     my $jazz = Jazztool->new(
-      filename => $filename,
+      filename => 'public' . $filename,
       tonic    => $tonic,
       octave   => $octave,
       cpatch   => $cpatch,
@@ -48,8 +48,6 @@ get '/' => sub ($c) {
     );
 
     $msgs = $jazz->process;
-
-    $filename =~ s/^public(.*)$/$1/;
   }
 
   $c->render(
