@@ -118,7 +118,7 @@ __DATA__
     <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>">
   </div>
   <div class="form-group">
-    <label for="percent">Percent:</label>
+    <label for="percent">Percent maximum:</label>
     <input type="number" class="form-control form-control-sm" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
   </div>
   <div class="form-check form-check-inline">
