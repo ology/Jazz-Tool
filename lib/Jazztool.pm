@@ -12,22 +12,22 @@ use Music::Chord::Note ();
 use Music::MelodicDevice::Transposition ();
 use Music::Note ();
 
-has filename => (is => 'ro', required => 1);               # MIDI file name
-has msgs     => (is => 'rw', default => sub { [] });       # bucket for output messages
-has tonic    => (is => 'ro', default => sub { 'C' });      # note to transpose things to
-has octave   => (is => 'ro', default => sub { 4 });        # octave of chord notes
-has cpatch   => (is => 'ro', default => sub { 0 });        # 0=piano, etc general midi
-has bpatch   => (is => 'ro', default => sub { 35 });       # 35=fretless bass, etc
-has my_bpm   => (is => 'ro', default => sub { 90 });       # beats per minute
-has phrases  => (is => 'ro', default => sub { 12 });       # number of 4/4 bars
-has repeat   => (is => 'ro', default => sub { 1 });        # number of times to repeat
-has percent  => (is => 'ro', default => sub { 25 });       # maximum half-note percentage
-has hihat    => (is => 'ro', default => sub { 'closed' }); # pedal, closed, open
-has do_drums => (is => 'ro', default => sub { 0 });        # to drum, or not to drum?
-has do_bass  => (is => 'ro', default => sub { 1 });        # to have a parallel bass or not
-has bassline => (is => 'rw', default => sub { [] });       # the notes of the bass-line
-has simple   => (is => 'ro', default => sub { 0 });        # don't randomly choose a transition
-has reverb   => (is => 'ro', default => sub { 15 });       # more dry than wet by default
+has filename => (is => 'ro', required => 1); # MIDI file name
+has tonic    => (is => 'ro');
+has octave   => (is => 'ro');
+has cpatch   => (is => 'ro');
+has bpatch   => (is => 'ro');
+has my_bpm   => (is => 'ro');
+has phrases  => (is => 'ro');
+has repeat   => (is => 'ro');
+has percent  => (is => 'ro');
+has hihat    => (is => 'ro');
+has do_drums => (is => 'ro');
+has do_bass  => (is => 'ro');
+has simple   => (is => 'ro');
+has reverb   => (is => 'ro');
+has bassline => (is => 'rw', default => sub { [] }); # the notes of the bass-line
+has msgs     => (is => 'rw', default => sub { [] }); # bucket for output messages
 has drummer  => (is => 'lazy');
 
 sub _build_drummer {
@@ -43,6 +43,7 @@ sub _build_drummer {
 
 sub process {
     my ($self) = @_;
+warn __PACKAGE__,' L',__LINE__,' ',$self->tonic,"\n";
 
     $self->drummer->sync(
         sub { drums($self) },
