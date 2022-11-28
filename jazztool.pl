@@ -122,11 +122,11 @@ __DATA__
     <input type="number" class="form-control form-control-sm" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="do_bass" value="<%= $do_bass %>" <%= $do_bass ? 'checked' : '' %>>
+    <input class="form-check-input" type="checkbox" id="do_bass" <%= $do_bass ? 'checked' : '' %>>
     <label class="form-check-label" for="do_bass">Bass</label>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="do_drums" value="<%= $do_drums %>" <%= $do_drums ? 'checked' : '' %>>
+    <input class="form-check-input" type="checkbox" id="do_drums" <%= $do_drums ? 'checked' : '' %>>
     <label class="form-check-label" for="do_drums">Drums</label>
   </div>
   <div class="form-group">
