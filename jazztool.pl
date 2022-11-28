@@ -51,6 +51,8 @@ __DATA__
 % title '12-Bar Improv Practice Tool';
 
 <a href="#" onClick="MIDIjs.play('<%= $filename %>');">Play MIDI</a>
+|
+<a href="<%= $filename %>">Download MIDI</a>
 <p></p>
 <pre>
 % for my $msg (@$msgs) {
