@@ -50,7 +50,7 @@ __DATA__
 % layout 'default';
 % title '12-Bar Improv Practice Tool';
 
-<midi-player src="<%= $filename %>"></midi-player>
+<a href="#" onClick="MIDIjs.play('<%= $filename %>');">Play</a>
 <p></p>
 <pre>
 % for my $msg (@$msgs) {
@@ -65,7 +65,7 @@ __DATA__
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+    <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
     <title><%= title %></title>
     <style>
       .padpage {
