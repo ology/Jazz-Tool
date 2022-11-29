@@ -186,6 +186,16 @@ __DATA__
   <div class="row">
     <div class="col">
       <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="simple" <%= $simple ? 'checked' : '' %>>
+        <label class="form-check-label" for="simple">Simple</label>
+      </div>
+    </div>
+  </div>
+  <p></p>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="do_bass" <%= $do_bass ? 'checked' : '' %>>
         <label class="form-check-label" for="do_bass">Bass</label>
       </div>
