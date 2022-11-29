@@ -6,4 +6,13 @@ This is a 12-bar oriented practice tool. That is, it's made to play groups of 12
 
 The detailed write-up for the code behind this app is [this link](https://ology.github.io/2022/11/25/twelve-bar-jazz-practice/).
 
+To install, have [Perl](https://www.perl.org/) and [cpanm](https://foswiki.org/Support/HowToInstallCpanModules#Install_CPAN_modules_into_your_local_Perl_library_using_61App::cpanminus_61), then:
+
+    git clone https://github.com/ology/Jazz-Tool.git
+    cd Jazz-Tool
+    cpanm --installdeps .
+    morbo jazztool.pl
+
+Then browse to http://localhost:3000/ - Voila!
+
 ![](Jazz-Tool-UI.png)
