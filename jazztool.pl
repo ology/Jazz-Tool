@@ -189,7 +189,7 @@ __DATA__
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <label for="percent">Percent:</label>
+        <label for="percent">Max %:</label>
       </div>
       <div class="col">
         <input type="number" class="form-control form-control-sm" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
