@@ -96,7 +96,7 @@ __DATA__
 
 @@ index.html.ep
 % layout 'default';
-% title '12-Bar Improv Practice Tool';
+% title 'Jazz Improv Practice Tool';
 
 <div class="row">
     <div class="col-6">
