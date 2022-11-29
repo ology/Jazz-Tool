@@ -139,7 +139,8 @@ sub chords {
             push @spec, [ $self->drummer->whole, @notes ];
         }
 
-        push @msgs, sprintf '%*d. %13s', length($self->phrases), $n + 1, $names;
+        push @msgs, $names;
+#        push @msgs, sprintf '%*d. %13s', length($self->phrases), $n + 1, $names;
 #        push @msgs, sprintf '%*d. %13s: %s',
 #            length($self->phrases), $n + 1, $names, ddc(\@spec);
 
