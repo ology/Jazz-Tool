@@ -8,7 +8,7 @@ use lib 'lib';
 use Jazztool ();
 
 use constant MIDI_GLOB  => 'jazz-*.mid';
-use constant TIME_LIMIT => 60 * 60 * 30; # 30 minutes
+use constant TIME_LIMIT => 60 * 30; # 30 minutes
 
 get '/' => sub ($c) {
   my $submit   = $c->param('submit')   || 0;
@@ -26,7 +26,7 @@ get '/' => sub ($c) {
   my $simple   = $c->param('simple')   || 0;
   my $reverb   = $c->param('reverb')   // 15;
 
-  _purge(); # purge defunct midi files
+  _purge($c); # purge defunct midi files
 
   my $filename = '';
   my $msgs = [];
@@ -80,7 +80,7 @@ app->start;
 
 sub _purge {
   my ($c) = @_;
-  my $threshold = time - TIME_LIMIT;
+  my $threshold = time() - TIME_LIMIT;
   my @files = File::Find::Rule
     ->file()
     ->name(MIDI_GLOB)
