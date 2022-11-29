@@ -20,7 +20,7 @@ get '/' => sub ($c) {
   my $phrases  = $c->param('phrases')  || 12;
   my $repeat   = $c->param('repeat')   || 1;
   my $percent  = $c->param('percent')  // 25;
-  my $hihat    = $c->param('hihat')    || 'closed';
+  my $hihat    = $c->param('hihat')    // 'closed'; # '' = none!
   my $do_drums = $c->param('do_drums') || 0;
   my $do_bass  = $c->param('do_bass')  // 1;
   my $simple   = $c->param('simple')   || 0;
@@ -241,6 +241,7 @@ __DATA__
       </div>
       <div class="col">
         <select class="form-control form-control-sm" id="hihat" name="hihat">
+          <option value="" <%= !$hihat ? 'selected' : '' %>>None</option>
 % for my $i (qw(pedal closed open)) {
           <option value="<%= $i %>" <%= $i eq $hihat ? 'selected' : '' %>><%= $i %></option>
 % }
