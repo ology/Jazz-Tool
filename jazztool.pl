@@ -84,6 +84,7 @@ __DATA__
     <div class="col">
 
 <form>
+  <input type="submit" class="btn btn-primary" name="submit" value="Submit">
   <div class="form-group">
     <label for="tonic">Tonic:</label>
     <select class="form-control form-control-sm" id="tonic" name="tonic">
@@ -144,7 +145,6 @@ __DATA__
 % }
     </select>
   </div>
-  <input type="submit" class="btn btn-primary" name="submit" value="Submit">
 </form>
 
     </div>
