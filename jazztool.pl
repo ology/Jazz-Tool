@@ -167,7 +167,7 @@ __DATA__
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <label for="phrases">Phrases:</label>
+        <label for="phrases">Bars:</label>
       </div>
       <div class="col">
         <input type="number" class="form-control form-control-sm" id="phrases" name="phrases" min="1" max="128" value="<%= $phrases %>">
