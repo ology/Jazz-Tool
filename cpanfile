@@ -1,4 +1,5 @@
 requires 'Data::Dumper::Compact';
+requires 'File::Find::Rule';
 requires 'MIDI::Drummer::Tiny';
 requires 'MIDI::Util';
 requires 'Mojolicious';
