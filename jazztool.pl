@@ -90,7 +90,7 @@ __DATA__
     <label for="tonic">Tonic:</label>
     <select class="form-control form-control-sm" id="tonic" name="tonic">
 % for my $i (qw( C Db D Eb E F Gb G Ab A Bb B )) {
-      <option value="<%= $i %>"><%= $i %></option>
+      <option value="<%= $i %>" <%= $i eq $tonic ? 'selected' : '' %>><%= $i %></option>
 % }
     </select>
   </div>
@@ -98,7 +98,7 @@ __DATA__
     <label for="octave">Octave:</label>
     <select class="form-control form-control-sm" id="octave" name="octave">
 % for my $i (3, 4, 5, 6) {
-      <option value="<%= $i %>"><%= $i %></option>
+      <option value="<%= $i %>" <%= $i eq $octave ? 'selected' : '' %>><%= $i %></option>
 % }
     </select>
   </div>
@@ -142,7 +142,7 @@ __DATA__
     <label for="hihat">Hihat:</label>
     <select class="form-control form-control-sm" id="hihat" name="hihat">
 % for my $i (qw(pedal closed open)) {
-      <option value="<%= $i %>"><%= $i %></option>
+      <option value="<%= $i %>" <%= $i eq $hihat ? 'selected' : '' %>><%= $i %></option>
 % }
     </select>
   </div>
