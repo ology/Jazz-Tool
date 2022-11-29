@@ -86,6 +86,7 @@ __DATA__
 <p></p>
 
 <form>
+
   <div class="form-group">
     <div class="row">
       <div class="col">
@@ -223,6 +224,7 @@ __DATA__
       </div>
     </div>
   </div>
+
   <input type="submit" class="btn btn-primary" name="submit" value="Submit">
 </form>
 
