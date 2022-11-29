@@ -9,7 +9,6 @@ use Jazztool ();
 use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 
 get '/' => sub ($c) {
-warn __PACKAGE__,' L',__LINE__,' ',,"HELLO?\n";
   my $submit   = $c->param('submit')   || 0;
   my $tonic    = $c->param('tonic')    || 'C';
   my $octave   = $c->param('octave')   || 4;
