@@ -108,11 +108,7 @@ __DATA__
         <label for="octave">Octave:</label>
       </div>
       <div class="col">
-        <select class="form-control form-control-sm" id="octave" name="octave">
-% for my $i (3, 4, 5, 6) {
-          <option value="<%= $i %>" <%= $i eq $octave ? 'selected' : '' %>><%= $i %></option>
-% }
-        </select>
+        <input type="number" class="form-control form-control-sm" id="octave" name="octave" min="3" max="6" value="<%= $octave %>">
       </div>
     </div>
   </div>
