@@ -9,6 +9,7 @@ use Jazztool ();
 use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
 
 get '/' => sub ($c) {
+warn __PACKAGE__,' L',__LINE__,' ',,"HELLO?\n";
   my $submit   = $c->param('submit')   || 0;
   my $tonic    = $c->param('tonic')    || 'C';
   my $octave   = $c->param('octave')   || 4;
@@ -81,7 +82,7 @@ __DATA__
 % title '12-Bar Improv Practice Tool';
 
 <div class="row">
-    <div class="col">
+    <div class="col-6">
 
 <form>
   <input type="submit" class="btn btn-primary" name="submit" value="Submit">
@@ -149,7 +150,7 @@ __DATA__
 </form>
 
     </div>
-    <div class="col">
+    <div class="col-6">
 
 % if ($filename) {
 <p></p>
@@ -191,7 +192,7 @@ __DATA__
   </head>
   <body>
     <div class="container padpage">
-      <h3><%= title %></h3>
+      <h3><a href="/"><%= title %></a></h3>
       <%= content %>
       <p></p>
       <div id="footer" class="small">
