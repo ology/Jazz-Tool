@@ -7,7 +7,7 @@ use Time::HiRes qw(time);
 use lib 'lib';
 use Jazztool ();
 
-use constant MIDI_GLOB  => 'jazz-*.mid';
+use constant MIDI_GLOB  => '*.mid';
 use constant TIME_LIMIT => 60 * 30; # 30 minutes
 
 get '/' => sub ($c) {
@@ -84,7 +84,7 @@ sub _purge {
   my @files = File::Find::Rule
     ->file()
     ->name(MIDI_GLOB)
-    ->mtime("<$threshold")
+    ->ctime("<$threshold")
     ->in('public');
   for my $file (sort @files) {
 #    unlink $file;
