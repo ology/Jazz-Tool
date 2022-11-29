@@ -8,7 +8,7 @@ use lib 'lib';
 use Jazztool ();
 
 use constant MIDI_GLOB  => '*.mid';
-use constant TIME_LIMIT => 60 * 30; # 30 minutes
+use constant TIME_LIMIT => 60 * 60; # 1 hour
 
 get '/' => sub ($c) {
   my $submit   = $c->param('submit')   || 0;
