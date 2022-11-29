@@ -80,6 +80,9 @@ __DATA__
 % layout 'default';
 % title '12-Bar Improv Practice Tool';
 
+<div class="row">
+    <div class="col">
+
 <form>
   <div class="form-group">
     <label for="tonic">Tonic:</label>
@@ -144,6 +147,9 @@ __DATA__
   <input type="submit" class="btn btn-primary" name="submit" value="Submit">
 </form>
 
+    </div>
+    <div class="col">
+
 % if ($filename) {
 <p></p>
 <a href="#" onClick="MIDIjs.play('<%= $filename %>');">Play MIDI</a>
@@ -156,6 +162,9 @@ __DATA__
 %   }
 </pre>
 % }
+
+    </div>
+  </div>
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
