@@ -6,7 +6,7 @@ use Time::HiRes qw(time);
 use lib 'lib';
 use Jazztool ();
 
-use constant TIME_LIMIT => 60 * 60 * 24 * 30; # 30 days
+use constant TIME_LIMIT => 60 * 60 * 30; # 30 minutes
 
 get '/' => sub ($c) {
   my $submit   = $c->param('submit')   || 0;
