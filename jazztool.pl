@@ -303,6 +303,7 @@ __DATA__
         Built by <a href="http://gene.ology.net/">Gene</a>
         with <a href="https://www.perl.org/">Perl</a> and
         <a href="https://mojolicious.org/">Mojolicious</a>
+        | <a href="https://ology.github.io/2022/11/25/twelve-bar-jazz-practice/">Write-up</a>
       </div>
     </div>
   </body>
