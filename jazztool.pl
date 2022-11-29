@@ -186,7 +186,7 @@ __DATA__
   <div class="row">
     <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="simple" <%= $simple ? 'checked' : '' %>>
+        <input class="form-check-input" type="checkbox" id="simple" name="simple" <%= $simple ? 'checked' : '' %>>
         <label class="form-check-label" for="simple">Simple</label>
       </div>
     </div>
@@ -196,13 +196,13 @@ __DATA__
   <div class="row">
     <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="do_bass" <%= $do_bass ? 'checked' : '' %>>
+        <input class="form-check-input" type="checkbox" id="do_bass" name="do_bass" <%= $do_bass ? 'checked' : '' %>>
         <label class="form-check-label" for="do_bass">Bass</label>
       </div>
     </div>
     <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="do_drums" <%= $do_drums ? 'checked' : '' %>>
+        <input class="form-check-input" type="checkbox" id="do_drums" name="do_drums" <%= $do_drums ? 'checked' : '' %>>
         <label class="form-check-label" for="do_drums">Drums</label>
       </div>
     </div>
