@@ -87,8 +87,8 @@ sub _purge {
     ->ctime("<$threshold")
     ->in('public');
   for my $file (sort @files) {
-#    unlink $file;
-warn __PACKAGE__,' L',__LINE__,' ',,"F: $file\n";
+    $c->app->log->info("Removing old file: $file");
+    unlink $file;
   }
 }
 
