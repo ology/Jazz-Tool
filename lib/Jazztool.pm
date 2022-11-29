@@ -131,7 +131,7 @@ sub chords {
 
             $_ = accidental($_) for @notes; # convert to flat
 
-            $names .= "-$new_chord"; # chord name
+            $names .= " - $new_chord"; # chord name
 
             push @spec, [ $self->drummer->half, @notes ];
         }
