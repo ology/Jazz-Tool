@@ -249,7 +249,7 @@ __DATA__
     </div>
   </div>
 
-  <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+  <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
 </form>
 
     </div>
