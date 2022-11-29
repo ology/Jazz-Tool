@@ -1,11 +1,13 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
+use File::Find::Rule ();
 use Time::HiRes qw(time);
 
 use lib 'lib';
 use Jazztool ();
 
+use constant MIDI_GLOB  => 'jazz-*.mid';
 use constant TIME_LIMIT => 60 * 60 * 30; # 30 minutes
 
 get '/' => sub ($c) {
@@ -23,6 +25,8 @@ get '/' => sub ($c) {
   my $do_bass  = $c->param('do_bass')  // 1;
   my $simple   = $c->param('simple')   || 0;
   my $reverb   = $c->param('reverb')   // 15;
+
+  _purge(); # purge defunct midi files
 
   my $filename = '';
   my $msgs = [];
@@ -73,6 +77,20 @@ get '/' => sub ($c) {
 app->log->level('info');
 
 app->start;
+
+sub _purge {
+  my ($c) = @_;
+  my $threshold = time - TIME_LIMIT;
+  my @files = File::Find::Rule
+    ->file()
+    ->name(MIDI_GLOB)
+    ->mtime("<$threshold")
+    ->in('public');
+  for my $file (sort @files) {
+#    unlink $file;
+warn __PACKAGE__,' L',__LINE__,' ',,"F: $file\n";
+  }
+}
 
 __DATA__
 
