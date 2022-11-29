@@ -61,7 +61,7 @@ sub drums {
         $self->drummer->metronome44swing($self->drummer->bars * $self->repeat);
         $self->drummer->note($self->drummer->whole, $self->drummer->kick, $self->drummer->ride1);
     }
-    else {
+    elsif ($self->hihat) {
         my $patch = $self->hihat . '_hh';
         $self->drummer->count_in({
             bars  => $self->drummer->bars * $self->repeat,
