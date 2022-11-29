@@ -157,11 +157,11 @@ __DATA__
 |
 <a href="<%= $filename %>">Download MIDI</a>
 <p></p>
-<pre>
+<ol>
 %   for my $msg (@$msgs) {
-  <%= $msg %>
+  <li><%= $msg %></li>
 %   }
-</pre>
+</ol>
 % }
 
     </div>
