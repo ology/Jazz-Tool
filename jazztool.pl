@@ -258,11 +258,11 @@ __DATA__
 
 % if ($filename) {
 <p></p>
-MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');">Play</a>
+MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');"><i class="fa-solid fa-play"></i></a>
 |
-<a href="#" onClick="MIDIjs.stop();">Stop</a>
+<a href="#" onClick="MIDIjs.stop();"><i class="fa-solid fa-stop"></i></a>
 |
-<a href="<%= $filename %>">Download</a>
+<a href="<%= $filename %>"><i class="fa-solid fa-download"></i></a>
 <p></p>
 <ol>
 %   for my $msg (@$msgs) {
@@ -280,6 +280,8 @@ MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');">Play</a>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/fontawesome.css" rel="stylesheet">
+    <link href="/css/solid.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
     <title><%= title %></title>
