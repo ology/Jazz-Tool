@@ -269,7 +269,7 @@ MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><
 <p></p>
 <ol>
 %   for my $msg (@$msgs) {
-  <li><%== join ' - ', map { qq|<a href="https://www.google.com/search?q=$_+chord">$_</a>| } @$msg %></li>
+  <li><%== join ' - ', map { qq|<a href="https://www.google.com/search?q=$_+chord" target="_blank">$_</a>| } @$msg %></li>
 %   }
 </ol>
 % }
