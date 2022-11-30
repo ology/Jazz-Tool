@@ -52,6 +52,9 @@ get '/' => sub ($c) {
     );
 
     $msgs = $jazz->process;
+    for my $msg (@$msgs) {
+      $_ =~ s/M/maj/ for @$msg;
+    }
   }
 
   $c->render(
