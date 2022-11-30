@@ -117,7 +117,7 @@ sub chords {
 
         push @bass_notes, $notes[0]; # accumulate the bass notes to play
 
-        my $names = $new_chord; # chord name
+        my $names = [ $new_chord ]; # chord name
 
         my @spec; # for accumulating within the loop
 
@@ -131,7 +131,7 @@ sub chords {
 
             $_ = accidental($_) for @notes; # convert to flat
 
-            $names .= " - $new_chord"; # chord name
+            push @$names, $new_chord; # chord name
 
             push @spec, [ $self->drummer->half, @notes ];
         }

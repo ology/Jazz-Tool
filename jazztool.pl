@@ -266,7 +266,7 @@ MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><
 <p></p>
 <ol>
 %   for my $msg (@$msgs) {
-  <li><%= $msg %></li>
+  <li><%= join ' - ', @$msg %></li>
 %   }
 </ol>
 % }
