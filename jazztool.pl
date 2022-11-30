@@ -86,7 +86,7 @@ sub _purge {
     ->name(MIDI_GLOB)
     ->ctime("<$threshold")
     ->in('public');
-  for my $file (sort @files) {
+  for my $file (@files) {
     $c->app->log->info("Removing old file: $file");
     unlink $file;
   }
