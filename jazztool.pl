@@ -258,11 +258,11 @@ __DATA__
 
 % if ($filename) {
 <p></p>
-MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');"><i class="fa-solid fa-play"></i></a>
+MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><i class="fa-solid fa-play"></i></a>
 |
-<a href="#" onClick="MIDIjs.stop();"><i class="fa-solid fa-stop"></i></a>
+<a href="#" onClick="MIDIjs.stop();" title="Stop MIDI"><i class="fa-solid fa-stop"></i></a>
 |
-<a href="<%= $filename %>"><i class="fa-solid fa-download"></i></a>
+<a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
 <p></p>
 <ol>
 %   for my $msg (@$msgs) {
