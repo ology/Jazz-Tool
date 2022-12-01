@@ -57,6 +57,7 @@ sub process {
 
 sub drums {
     my ($self) = @_;
+
     if ($self->do_drums) {
         $self->drummer->metronome44swing($self->drummer->bars * $self->repeat);
         $self->drummer->note($self->drummer->whole, $self->drummer->kick, $self->drummer->ride1);
@@ -72,6 +73,7 @@ sub drums {
 
 sub bass {
     my ($self) = @_;
+
     if ($self->do_bass) {
         set_chan_patch($self->drummer->score, 1, $self->bpatch);
 
@@ -86,6 +88,7 @@ sub bass {
 
 sub chords {
     my ($self) = @_;
+
     set_chan_patch($self->drummer->score, 0, $self->cpatch);
 
     my $md = Music::MelodicDevice::Transposition->new;
@@ -162,6 +165,7 @@ sub chords {
 
 sub transposition {
     my ($transpose, $chord, $md) = @_;
+
     if ($transpose && $chord =~ /^([A-G][#b]?)(.*)$/) {
         my $note = $1;
         my $flav = $2;
@@ -171,11 +175,13 @@ sub transposition {
         $chord = $new_note;
         $chord .= $flav if $flav;
     }
+
     return $chord;
 }
 
 sub accidental {
     my ($string) = @_; # note or chord name
+
     if ($string =~ /^([A-G]#)(.*)?$/) { # is the note sharp?
         my $note = $1;
         my $flav = $2;
@@ -184,6 +190,7 @@ sub accidental {
         $string = $mn->format('isobase');
         $string .= $flav if $flav;
     }
+
     return $string;
 }
 
