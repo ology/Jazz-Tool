@@ -102,7 +102,7 @@ __DATA__
 % title 'Jazz Improv Practice Tool';
 
 <div class="row">
-    <div class="col-6">
+  <div class="col-6">
 
 <p></p>
 
@@ -256,8 +256,8 @@ __DATA__
   <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Generate">
 </form>
 
-    </div>
-    <div class="col-6">
+  </div>
+  <div class="col-6">
 
 % if ($filename) {
 <p></p>
@@ -274,8 +274,8 @@ MIDI: <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><
 </ol>
 % }
 
-    </div>
   </div>
+</div>
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
