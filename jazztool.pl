@@ -268,9 +268,9 @@ __DATA__
     <a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
     <p></p>
     <ol>
-    %   for my $msg (@$msgs) {
+%   for my $msg (@$msgs) {
       <li><%== join ' - ', map { qq|<a href="https://www.google.com/search?q=$_+chord" target="_blank">$_</a>| } @$msg %></li>
-    %   }
+%   }
     </ol>
 % }
 
