@@ -114,7 +114,7 @@ __DATA__
         <label for="tonic">Tonic:</label>
       </div>
       <div class="col">
-        <select class="form-control form-control-sm" id="tonic" name="tonic" title="C Db D Eb E F Gb G Ab A Bb B">
+        <select class="form-control form-control-sm" id="tonic" name="tonic" title="Tonic note of the progression">
 % for my $i (qw( C Db D Eb E F Gb G Ab A Bb B )) {
           <option value="<%= $i %>" <%= $i eq $tonic ? 'selected' : '' %>><%= $i %></option>
 % }
