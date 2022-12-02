@@ -114,7 +114,7 @@ __DATA__
         <label for="tonic">Tonic:</label>
       </div>
       <div class="col">
-        <select class="form-control form-control-sm" id="tonic" name="tonic">
+        <select class="form-control form-control-sm" id="tonic" name="tonic" title="C Db D Eb E F Gb G Ab A Bb B">
 % for my $i (qw( C Db D Eb E F Gb G Ab A Bb B )) {
           <option value="<%= $i %>" <%= $i eq $tonic ? 'selected' : '' %>><%= $i %></option>
 % }
@@ -129,7 +129,7 @@ __DATA__
         <label for="octave">Octave:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="octave" name="octave" min="3" max="6" value="<%= $octave %>">
+        <input type="number" class="form-control form-control-sm" id="octave" name="octave" min="3" max="6" value="<%= $octave %>" title="Octave from 3 to 6">
       </div>
     </div>
   </div>
@@ -140,7 +140,7 @@ __DATA__
         <label for="cpatch">Top patch:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="cpatch" name="cpatch" min="0" max="127" value="<%= $cpatch %>">
+        <input type="number" class="form-control form-control-sm" id="cpatch" name="cpatch" min="0" max="127" value="<%= $cpatch %>" title="0 to 127 defining the top chord patch">
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@ __DATA__
         <label for="bpatch">Bass patch:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>">
+        <input type="number" class="form-control form-control-sm" id="bpatch" name="bpatch" min="0" max="127" value="<%= $bpatch %>" title="0 to 127 defining the bass patch">
       </div>
     </div>
   </div>
@@ -162,7 +162,7 @@ __DATA__
         <label for="my_bpm">BPM:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>">
+        <input type="number" class="form-control form-control-sm" id="my_bpm" name="my_bpm" min="1" max="200" value="<%= $my_bpm %>" title="1 to 200 beats per minute">
       </div>
     </div>
   </div>
@@ -173,7 +173,7 @@ __DATA__
         <label for="phrases">Bars:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="phrases" name="phrases" min="1" max="128" value="<%= $phrases %>">
+        <input type="number" class="form-control form-control-sm" id="phrases" name="phrases" min="1" max="64" value="<%= $phrases %>" title="1 to 64 bars of possibly unique chords">
       </div>
     </div>
   </div>
@@ -184,7 +184,7 @@ __DATA__
         <label for="repeat">Repeat:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>">
+        <input type="number" class="form-control form-control-sm" id="repeat" name="repeat" min="1" max="64" value="<%= $repeat %>" title="1 to 64 repeats of the defined bars">
       </div>
     </div>
   </div>
@@ -195,7 +195,7 @@ __DATA__
         <label for="percent">Max %:</label>
       </div>
       <div class="col">
-        <input type="number" class="form-control form-control-sm" id="percent" name="percent" min="0" max="100" value="<%= $percent %>">
+        <input type="number" class="form-control form-control-sm" id="percent" name="percent" min="0" max="100" value="<%= $percent %>" title="Maximum percentage of half note divisions">
       </div>
     </div>
   </div>
@@ -203,7 +203,7 @@ __DATA__
   <div class="row">
     <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="simple" name="simple" <%= $simple ? 'checked' : '' %>>
+        <input class="form-check-input" type="checkbox" id="simple" name="simple" <%= $simple ? 'checked' : '' %> title="Play the basic chords of the standard progression">
         <label class="form-check-label" for="simple">Simple</label>
       </div>
     </div>
@@ -213,13 +213,13 @@ __DATA__
   <div class="row">
     <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="do_bass" name="do_bass" <%= $do_bass ? 'checked' : '' %>>
+        <input class="form-check-input" type="checkbox" id="do_bass" name="do_bass" <%= $do_bass ? 'checked' : '' %> title="Play a parallel bassline">
         <label class="form-check-label" for="do_bass">Bass</label>
       </div>
     </div>
     <div class="col">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="do_drums" name="do_drums" <%= $do_drums ? 'checked' : '' %>>
+        <input class="form-check-input" type="checkbox" id="do_drums" name="do_drums" <%= $do_drums ? 'checked' : '' %> title="Play a cheesy drum pattern">
         <label class="form-check-label" for="do_drums">Drums</label>
       </div>
     </div>
@@ -232,7 +232,7 @@ __DATA__
         <label for="reverb">Reverb:</label>
       </div>
       <div class="col">
-    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>">
+    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="Set the drum reverb amount">
       </div>
     </div>
   </div>
@@ -243,7 +243,7 @@ __DATA__
         <label for="hihat">Hihat:</label>
       </div>
       <div class="col">
-        <select class="form-control form-control-sm" id="hihat" name="hihat">
+        <select class="form-control form-control-sm" id="hihat" name="hihat" title="Set the hi-hat metronome patch">
           <option value="" <%= !$hihat ? 'selected' : '' %>>None</option>
 % for my $i (qw(pedal closed open)) {
           <option value="<%= $i %>" <%= $i eq $hihat ? 'selected' : '' %>><%= $i %></option>
