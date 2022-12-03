@@ -246,7 +246,7 @@ __DATA__
         <select class="form-control form-control-sm" id="hihat" name="hihat" title="Set the hi-hat metronome patch">
           <option value="" <%= !$hihat ? 'selected' : '' %>>None</option>
 % for my $i (qw(pedal closed open)) {
-          <option value="<%= $i %>" <%= $i eq $hihat ? 'selected' : '' %>><%= $i %></option>
+          <option value="<%= $i %>" <%= $i eq $hihat ? 'selected' : '' %>><%= ucfirst $i %></option>
 % }
         </select>
       </div>
