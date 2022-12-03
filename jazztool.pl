@@ -232,7 +232,7 @@ __DATA__
         <label for="reverb">Reverb:</label>
       </div>
       <div class="col">
-    <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="Set the drum reverb amount">
+        <input type="number" class="form-control form-control-sm" id="reverb" name="reverb" min="0" max="127" value="<%= $reverb %>" title="0 to 127 drum reverb amount">
       </div>
     </div>
   </div>
