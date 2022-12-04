@@ -294,9 +294,6 @@ __DATA__
       .padpage {
         padding-top: 10px;
       }
-      .block {
-        display: inline-block;
-      }
       .small {
         font-size: small;
         color: darkgrey;
