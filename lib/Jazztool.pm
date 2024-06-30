@@ -1,6 +1,6 @@
 package Jazztool;
 
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Drummer-Tiny MIDI-Util Music-Cadence Music-MelodicDevice-Transposition); # local author libs
+use if $ENV{USER} eq "gene", lib => map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Drummer-Tiny MIDI-Util Music-Cadence Music-MelodicDevice-Transposition); # local author libs
 
 use Moo;
 
