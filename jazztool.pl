@@ -105,7 +105,7 @@ __DATA__
 % title 'Jazz Improv Practice Tool';
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-4">
 
 <p></p>
 
@@ -275,12 +275,13 @@ __DATA__
 
 % if ($filename) {
     <p></p>
-    MIDI: &nbsp;
+    <span class="controls">
     <a href="#" onClick="MIDIjs.play('<%= $filename %>');" title="Play MIDI"><i class="fa-solid fa-play"></i></a>
     &nbsp; | &nbsp;
     <a href="#" onClick="MIDIjs.stop();" title="Stop MIDI"><i class="fa-solid fa-stop"></i></a>
     &nbsp; | &nbsp;
     <a href="<%= $filename %>" title="Download MIDI"><i class="fa-solid fa-download"></i></a>
+    </span>
     <p></p>
     <ol>
 %   for my $msg (@$msgs) {
@@ -303,15 +304,7 @@ __DATA__
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
     <title><%= title %></title>
-    <style>
-      .padpage {
-        padding-top: 10px;
-      }
-      .small {
-        font-size: small;
-        color: darkgrey;
-      }
-    </style>
+    <link href="/css/style.css" rel="stylesheet">
   </head>
   <body>
     <div class="container padpage">
